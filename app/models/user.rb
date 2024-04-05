@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :rememberable, :validatable
   validates :name, presence: true
-  # has_one :profile
+  has_one :profile
   has_many :authored_posts, class_name: "Post", foreign_key: "author_id" 
 end
