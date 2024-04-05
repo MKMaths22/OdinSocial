@@ -1,7 +1,5 @@
-class Post < ApplicationRecord
+class Comment < ApplicationRecord
   # Add a SCOPE to automatically order by date
   belongs_to :author, class_name: "User", foreign_key: "author_id"
-  has_many :comments
-  has_many :likes
-  has_many :likers, through: :likes
+  belongs_to :post, foreign_key: "post_id"
 end
