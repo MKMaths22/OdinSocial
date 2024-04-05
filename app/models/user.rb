@@ -11,4 +11,8 @@ class User < ApplicationRecord
   # the likes one user has many of are the likes they have given to posts
   has_many :liked_posts, through: :likes
   # the posts the user has liked
+  has_many :outgoing_follow_requests, class_name: "FollowRequest", foreign_key: "requester_id"
+  has_many :incoming_follow_requests, class_name: "FollowRequest", foreign_key: "requestee_id"
+  has_many :requestees, through: :outgoing_follow_requests
+  has_many :requesters, through: :incoming_follow_requests
 end
