@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_06_130503) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_06_135443) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_130503) do
     t.bigint "requestee_id"
     t.bigint "requester_id"
     t.index ["requestee_id"], name: "index_follow_requests_on_requestee_id"
+    t.index ["requester_id", "requestee_id"], name: "index_follow_requests_on_requester_id_and_requestee_id"
     t.index ["requester_id"], name: "index_follow_requests_on_requester_id"
   end
 
@@ -39,6 +40,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_130503) do
     t.bigint "follower_id"
     t.bigint "followee_id"
     t.index ["followee_id"], name: "index_follows_on_followee_id"
+    t.index ["follower_id", "followee_id"], name: "index_follows_on_follower_id_and_followee_id"
     t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
 
