@@ -36,10 +36,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_130503) do
   create_table "follows", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "followers_id"
-    t.bigint "followees_id"
-    t.index ["followees_id"], name: "index_follows_on_followees_id"
-    t.index ["followers_id"], name: "index_follows_on_followers_id"
+    t.bigint "follower_id"
+    t.bigint "followee_id"
+    t.index ["followee_id"], name: "index_follows_on_followee_id"
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -87,8 +87,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_130503) do
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "follow_requests", "users", column: "requestee_id"
   add_foreign_key "follow_requests", "users", column: "requester_id"
-  add_foreign_key "follows", "users", column: "followees_id"
-  add_foreign_key "follows", "users", column: "followers_id"
+  add_foreign_key "follows", "users", column: "followee_id"
+  add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "likes", "posts", column: "liked_post_id"
   add_foreign_key "likes", "users", column: "liker_id"
   add_foreign_key "posts", "users", column: "author_id"
