@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user
-    unless params[:controller] == 'devise/sessions'
-      redirect_to new_user_session_path unless current_user
-    end
+    redirect_to new_user_session_path unless params[:controller] == 'devise/sessions' || current_user
   end
 end
