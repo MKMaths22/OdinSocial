@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   root "posts#index"
   resources :posts
   resources :comments, except: [:show, :index]
+  resources :follow_requests, only: [:create, :destroy]
 end
