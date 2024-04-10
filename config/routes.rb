@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :posts
   resources :comments, except: [:show, :index]
   resources :follow_requests, only: [:create, :destroy]
+  resources :follows, only: [:create, :destroy]
 end
