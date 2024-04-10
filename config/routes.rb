@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   # end
   root "posts#index"
   resources :posts
+  resources :comments, except: [:show, :index]
 end
