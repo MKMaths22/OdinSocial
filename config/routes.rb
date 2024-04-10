@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :follow_requests, only: [:create, :destroy]
   resources :follows, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
+  resources :profiles, except: [:show, :index]
 end
