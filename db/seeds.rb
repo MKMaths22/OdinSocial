@@ -7,3 +7,33 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Profile.delete_all
+Comment.delete_all
+Like.delete_all
+FollowRequest.delete_all
+Follow.delete_all
+Post.delete_all
+User.delete_all
+
+names_array = ['Peter', 'Chris', 'Ste', 'Rachael', 'Tom', 'Andrew', 'Brian', 'Charles', 'David', 'Edward', 'Fred', 'George', 'Harold', 'Imelda', 'Janice', 'Keith']
+names_array.each do |person|
+  User.create(name: person, email: person.downcase.concat('@gmail.com') , password: 'abcdef', password_confirmation: 'abcdef', confirmed_at: Time.now)
+end
+
+posts_array = [['Attention', 'The quick brown fox', 'Tom'], 
+['Danger', 'Jumps over the lazy dog', 'Brian'],
+['Supermarkets', 'Sell you groceries', 'Charles']]
+posts_array.each do |subarray|
+  Post.create(title: subarray[0], body: subarray[1], author: User.find_by(name: subarray[2]))
+end
+
+comments_array = [['This post sucks.', 'Peter', 'Attention']]
+comments_array.each do |subarray|
+  Comment.create(body: subarray[0], author: User.find_by(name: subarray[1]), post: Post.find_by(title: subarray[2]))
+end
+
+
+
+
+
