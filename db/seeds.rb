@@ -33,6 +33,16 @@ comments_array.each do |subarray|
   Comment.create(body: subarray[0], author: User.find_by(name: subarray[1]), post: Post.find_by(title: subarray[2]))
 end
 
+likes_array = [['Peter', 'Attention']]
+likes_array.each do |subarray|
+  Like.create(liker: User.find_by(name: subarray[0]), liked_post: Post.find_by(title: subarray[1]))
+end
+
+follows_array = [['Peter', 'Chris']]
+follows_array.each do |subarray|
+  Follow.create(follower: User.find_by(name: subarray[0]), followee: User.find_by(name: subarray[1]))
+end
+
 
 
 
