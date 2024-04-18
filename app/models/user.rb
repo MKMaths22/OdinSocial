@@ -18,16 +18,16 @@ class User < ApplicationRecord
   has_many :outgoing_follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
   has_many :incoming_follows, class_name: "Follow", foreign_key: "followee_id", dependent: :destroy
   has_many :followees, through: :outgoing_follows
-  # not sure if followees are needed but set up association just in case
   has_many :followers, through: :incoming_follows
-
-  def to_request?(user)
-    return false if current_user.requestees.includes?(user)
-    return false if current_user.followees.includes?(user)
-    return false if user == current_user
-    true
+  
+  def self.users_to_request(user = current_user)
+    # It would be nice if something like this worked:
+    # User.where.not(user.requestees).where.not(user.followees).where.not(user)
+    output_array = []
+    User.all.each do |person|
+      output_array.push(person) unless ((person == user) | (user.requestees.include?(person)) | (user.followees.include?(person)))
+    end
+    output_array
   end
-
-  scope :to_request, ->{ where(to_request?) }
 
 end
