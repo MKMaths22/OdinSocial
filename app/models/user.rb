@@ -15,9 +15,19 @@ class User < ApplicationRecord
   has_many :incoming_follow_requests, class_name: "FollowRequest", foreign_key: "requestee_id", dependent: :destroy
   has_many :requestees, through: :outgoing_follow_requests
   has_many :requesters, through: :incoming_follow_requests
-  has_many :outgoing_follows, class_name: "Follow", foreign_key: "followee_id", dependent: :destroy
-  has_many :incoming_follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
+  has_many :outgoing_follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
+  has_many :incoming_follows, class_name: "Follow", foreign_key: "followee_id", dependent: :destroy
   has_many :followees, through: :outgoing_follows
   # not sure if followees are needed but set up association just in case
   has_many :followers, through: :incoming_follows
+
+  def to_request?(user)
+    return false if current_user.requestees.includes?(user)
+    return false if current_user.followees.includes?(user)
+    return false if user == current_user
+    true
+  end
+
+  scope :to_request, ->{ where(to_request?) }
+
 end
