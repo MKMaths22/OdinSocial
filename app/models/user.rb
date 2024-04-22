@@ -29,5 +29,4 @@ class User < ApplicationRecord
     end
     output_array
   end
-
 end
