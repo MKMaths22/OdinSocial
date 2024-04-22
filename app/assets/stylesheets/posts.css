@@ -7,4 +7,7 @@ div.navbar {
   flex-direction: horizontal;
   max-width: 90vw;
   justify-content: space-evenly;
+  font-size: 30px;
+  background-color: rgb(150,150,150);
+  padding: 15px;
 }
