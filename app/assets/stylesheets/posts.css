@@ -1,13 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: rgb(200,200,200);
 }
 
 div.navbar {
   display: flex;
-  flex-direction: horizontal;
+  flex-direction: row;
   max-width: 90vw;
   justify-content: space-evenly;
   font-size: 30px;
   background-color: rgb(150,150,150);
   padding: 15px;
+}
+
+h3 > p {
+  display: inline;
+  padding-left: 5px;
+}
+
+div.postdiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+  width: 30vw;
+  background-color: rgb(125, 125, 120);
+  border: 5px solid rgb(50, 50, 50);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+h3.postauthor {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+div.posttitle {
+  font-size: 25px;
+}
+
+div.postbody {
+  font-size: 20px;
+}
+
+div.postcomments {
+  font-size: 15px;
+  background-color: rgb(150, 100, 100);
+  max-width: 50%;
+  border: 5px solid rgb(200, 200, 200);
+  padding: 10px;
+}
+
+div.postlikes {
+  font-size: 15px;
+  background-color: rgb(100, 150, 100);
+  max-width: 50%;
+  border: 5px solid rgb(200, 200, 200);
+  padding: 10px;
 }

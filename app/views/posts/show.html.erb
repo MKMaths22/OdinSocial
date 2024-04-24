@@ -1,9 +1,25 @@
 <div class="postdiv">
-  <h3 By <%= @post.author %> >
+  <h3 class="postauthor"> By<%= render 'devise/registrations/link_to_user', user: @post.author %>
+  </h3>
   <div class="posttitle">
     <%= @post.title %>
   </div>
   <div class="postbody">
     <%= @post.body %>
+  </div>
+  <div class="postlikes">
+    <% if @post.likes.size.zero? %>
+      This post has no likes.
+    <% else %>
+      Liked by
+      <% @post.likes.each do |like| %>
+        <%= render "devise/registrations/link_to_user", user: like.liker %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="postcomments">
+    <% if @post.comments.size.zero? %>
+      This post has no comments.
+    <% end %>
   </div>
 </div>
