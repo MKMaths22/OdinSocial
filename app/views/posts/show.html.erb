@@ -8,14 +8,23 @@
     <%= @post.body %>
   </div>
   <div class="postlikes">
-    <% if @post.likes.size.zero? %>
-      This post has no likes.
-    <% else %>
-      Liked by
-      <% @post.likes.each do |like| %>
-        <%= render "devise/registrations/link_to_user", user: like.liker %>
+    <div class="listoflikes">
+      <% if @post.likes.size.zero? %>
+        This post has no likes.
+      <% else %>
+        Liked by
+        <% @post.likes.each do |like| %>
+          <%= render "devise/registrations/link_to_user", user: like.liker %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <div class="likecreatedestroy">
+      <% if @post.likers.include?(current_user) %>
+          <%= link_to "Delete Like", like_path(id: Like.where(liked_post: @post, liker: current_user).first.id), data: { 'turbo-method' => :delete } %>
+      <% else %>
+          <button class="like" type="submit">Like this!</button>
+      <% end %>
+    </div>
   </div>
   <div class="postcomments">
     <% if @post.comments.size.zero? %>

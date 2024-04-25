@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   
   def index
-    @followee_posts = Post.where(author: current_user.followees).take(10).includes(:likes, :comments)
-    @current_user_posts = current_user.authored_posts.take(10).includes(:likes, :comments)
+    @followee_posts = Post.where(author: current_user.followees).includes(:likes, :comments).take(10)
+    @current_user_posts = current_user.authored_posts.includes(:likes, :comments).take(10)
   end
 
   def show
