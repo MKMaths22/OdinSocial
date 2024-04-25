@@ -20,9 +20,9 @@
     </div>
     <div class="likecreatedestroy">
       <% if @post.likers.include?(current_user) %>
-          <%= link_to "Delete Like", like_path(id: Like.where(liked_post: @post, liker: current_user).first.id), data: { 'turbo-method' => :delete } %>
+        <%= link_to "Delete Like", like_path(id: Like.where(liked_post: @post, liker: current_user).first.id), data: { 'turbo-method' => :delete } %>
       <% else %>
-          <button class="like" type="submit">Like this!</button>
+        <%= link_to "Like this!", likes_path(like: { liker_id: current_user.id, liked_post_id: @post.id } ), data: { 'turbo-method' => :post } %>
       <% end %>
     </div>
   </div>

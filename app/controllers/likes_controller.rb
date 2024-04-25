@@ -1,9 +1,12 @@
 class LikesController < ApplicationController
   def create
-    # current_post_id must be supplied for create method.
-    current_post = Post.where(id: current_post_id).first
-    return unless current_post
-    @like = Like.new(liker: current_user, liked_post: current_post)
+    @like = Like.new(allowed_like_params)
+    if @like.save
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = 'Like failed.'
+      redirect_back(fallback_location: root_path, status: :unprocessable_entity)
+    end
   end
 
   def destroy
@@ -15,5 +18,11 @@ class LikesController < ApplicationController
       @like.destroy
       redirect_back(fallback_location: root_path)
     end
+  end
+
+  private
+
+  def allowed_like_params
+    params.require(:like).permit(:liked_post_id, :liker_id)
   end
 end
