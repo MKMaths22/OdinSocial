@@ -23,7 +23,12 @@ end
 
 posts_array = [['Attention', 'The quick brown fox', 'Tom'], 
 ['Danger', 'Jumps over the lazy dog', 'Brian'],
-['Supermarkets', 'Sell you groceries', 'Charles']]
+['Supermarkets', 'Sell you groceries', 'Charles'],
+['I am short', 'I am tragically short for an older brother.', 'Chris'],
+['I am tiny', 'My tininiess makes my husband Chris look taller.', 'Rachael'],
+['I am in Sweden.', 'My residency in Sweden makes my phone number very long, but at least I am on WhatsApp.', 'Ste'],
+['I made this site', 'The users called Chris, Ste and Rachael are ficticious, and any resemblance to actual family members is purely coincidental.', 'Peter'],
+['I wrote this post.', 'Just so that I have a second post to display.', 'Peter']]
 posts_array.each do |subarray|
   Post.create(title: subarray[0], body: subarray[1], author: User.find_by(name: subarray[2]))
 end
@@ -38,7 +43,7 @@ likes_array.each do |subarray|
   Like.create(liker: User.find_by(name: subarray[0]), liked_post: Post.find_by(title: subarray[1]))
 end
 
-follows_array = [['Peter', 'Chris']]
+follows_array = [['Peter', 'Chris'], ['Peter', 'Ste'], ['Peter', 'Rachael']]
 follows_array.each do |subarray|
   Follow.create(follower: User.find_by(name: subarray[0]), followee: User.find_by(name: subarray[1]))
 end

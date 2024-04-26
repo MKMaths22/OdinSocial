@@ -1,0 +1,13 @@
+<div class="manypostsdiv">
+  <h1 class="manypostsheader">
+    <%= header_text %>
+  </h1>
+  <% if posts_collection.size.zero? %>
+    <h2 class="nopostsheader">There are no posts to display.
+    </h2>
+  <% else %>
+    <% posts_collection.each do |one_post| %>
+      <%= render 'display_post', post: one_post %>
+    <% end %>
+  <% end %>
+</div>

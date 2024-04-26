@@ -1,3 +1,5 @@
 <%= stylesheet_link_tag "posts" %>
-
-This is a dummy Index view for Posts.
+<div class="postsindexdiv">
+  <%= render 'display_many_posts', posts_collection: @current_user_posts, header_text: "My Recent Authored Posts" %>
+  <%= render 'display_many_posts', posts_collection: @followee_posts, header_text: "Recent Posts Authored by Those I Follow" %>
+</div>
