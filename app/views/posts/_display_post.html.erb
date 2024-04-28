@@ -5,7 +5,11 @@
     <%= post.title %>
   </div>
   <div class="postbody">
-    <%= post.body %>
+    <% if of_many == true && post.body.size > text_limit %>
+      <%= post.body[0, text_limit]... %>
+    <% else %>
+      <%= post.body %>
+    <% end %>
   </div>
   <div class="postlikes">
     <div class="listoflikes">

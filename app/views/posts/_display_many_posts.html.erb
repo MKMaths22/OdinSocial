@@ -7,7 +7,7 @@
     </h2>
   <% else %>
     <% posts_collection.each do |one_post| %>
-      <%= render 'display_post', post: one_post %>
+      <%= render 'display_post', post: one_post, of_many: true, text_limit: 50  %>
     <% end %>
   <% end %>
 </div>
