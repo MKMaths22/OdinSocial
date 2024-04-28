@@ -1,5 +1,5 @@
 <div class="postdiv">
-  <h3 class="postauthor"> By<%= render 'devise/registrations/link_to_user', user: post.author %>
+  <h3 class="postauthor"> <%= render 'devise/registrations/link_to_user', user: post.author, by: true %>
   </h3>
   <div class="posttitle">
     <%= post.title %>
@@ -14,7 +14,7 @@
       <% else %>
         Liked by
         <% post.likes.each do |like| %>
-          <%= render "devise/registrations/link_to_user", user: like.liker %>
+          <%= render "devise/registrations/link_to_user", user: like.liker, by: false %>
         <% end %>
       <% end %>
     </div>
@@ -29,6 +29,12 @@
   <div class="postcomments">
     <% if post.comments.size.zero? %>
       This post has no comments.
+    <% else %>
+      <h3>Recent Comments</h3>
+      <% comments_to_show = post.comments.take(10) %>
+      <% comments_to_show.each do |one_comment| %>
+        <%= render 'display_comment', comment: one_comment %>
+      <% end %>
     <% end %>
   </div>
 </div>

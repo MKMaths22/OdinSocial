@@ -77,3 +77,18 @@ div.manypostsdiv {
   align-items: center;
   gap: 20px;
 }
+
+div.postcomments {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+div.commentdiv {
+  display: flex;
+  gap: 30px;
+}
+
+div.commentdiv > div.userlinkdiv {
+  font-size: 10px;
+}

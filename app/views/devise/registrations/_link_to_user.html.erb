@@ -1,3 +1,6 @@
 <p class="userlinkdiv">
+  <% if by==true %>
+    By
+  <% end %> 
   <%= link_to "#{user.name}", "/users/registrations/#{user.id}" %>
 </p>

@@ -33,7 +33,7 @@ posts_array.each do |subarray|
   Post.create(title: subarray[0], body: subarray[1], author: User.find_by(name: subarray[2]))
 end
 
-comments_array = [['This post sucks.', 'Peter', 'Attention']]
+comments_array = [['This post sucks.', 'Peter', 'Attention'], ['Waah', 'Chris', 'I wrote this post.'], ['Read my comment.', 'Peter', 'I am in Sweden.'], ['Typing a comment body', 'Chris', 'I am in Sweden.'], ['Adding another comment', 'Rachael', 'I am in Sweden.']]
 comments_array.each do |subarray|
   Comment.create(body: subarray[0], author: User.find_by(name: subarray[1]), post: Post.find_by(title: subarray[2]))
 end

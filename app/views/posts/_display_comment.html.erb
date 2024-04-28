@@ -1,0 +1,6 @@
+<div class="commentdiv">
+  <p class="commentbody">
+    <%= comment.body %>
+  </p>
+  <%= render 'devise/registrations/link_to_user', user: comment.author, by: true %>
+</div>
