@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    if current_user != comment.author
+    if current_user != @comment.author
       flash.now[:alert] = 'Delete failed. You may only delete your own comments.'
       redirect_to root_path
     else
