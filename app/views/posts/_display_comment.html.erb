@@ -1,6 +1,13 @@
 <div class="commentdiv">
   <p class="commentbody">
-    <%= comment.body %>
+    <% if text_limit > 0 && comment.body.size > text_limit %>
+      <%= comment.body[0, text_limit]... %>
+    <% else %>
+      <%= comment.body %>
+    <% end %>
   </p>
   <%= render 'devise/registrations/link_to_user', user: comment.author, by: true %>
+  <% if comment.author == current_user %>
+    <%= link_to "Delete Comment", comment_path(id: comment.id), data: { 'turbo-method' => :delete } %>
+  <% end %>
 </div>

@@ -55,6 +55,7 @@ class PostsController < ApplicationController
       redirect_to posts_path
     else
       flash.now[:alert] = `Users may only delete their own posts. Permission denied.`
+      redirect_to root_path
     end
   end
   
