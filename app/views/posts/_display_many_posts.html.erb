@@ -7,7 +7,8 @@
     </h2>
   <% else %>
     <% posts_collection.each do |one_post| %>
-      <%= render 'display_post', post: one_post, of_many: true, text_limit: 50  %>
+      <%= render 'display_post', post: one_post, text_limit: 50  %>
     <% end %>
   <% end %>
+  <%# The text_limit variable is positive if we intend to abbreviate posts and comments. If, as in the posts#show view we do not have abbreviation, we use text_limit = 0 to mean "infinity" or "no limit" %>
 </div>
