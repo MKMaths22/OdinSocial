@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:id])
     if current_user != @post.author
       flash.now[:alert] = `Users may only edit their own posts. Permission denied.`
       redirect_to post_path(id: @post.id)
