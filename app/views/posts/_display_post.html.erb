@@ -40,7 +40,7 @@
     <h3>Recent Comments</h3>
       <% comments_to_show = post.comments.take(10) %>
       <% comments_to_show.each do |one_comment| %>
-        <%= render 'display_comment', comment: one_comment, text_limit: text_limit %>
+        <%= render 'comments/display_comment', comment: one_comment, text_limit: text_limit %>
       <% end %>
     <% end %>
   </div>
