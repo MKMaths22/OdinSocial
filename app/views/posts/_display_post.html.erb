@@ -34,7 +34,10 @@
     <% if post.comments.size.zero? %>
       This post has no comments.
     <% else %>
-      <h3>Recent Comments</h3>
+      <%= turbo_frame_tag "add_comment" do %>
+        <%= link_to "Add Comment", new_comment_path(post_id: post.id) %>
+      <% end %>
+    <h3>Recent Comments</h3>
       <% comments_to_show = post.comments.take(10) %>
       <% comments_to_show.each do |one_comment| %>
         <%= render 'display_comment', comment: one_comment, text_limit: text_limit %>

@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
   def new
-    @comment = Comment.new
+    @comment = Comment.new(author: current_user, post: Post.find(params[:post_id]))
   end
   
   def create
-    @comment = Comment.new(author: current_user)
+    @comment = Comment.new(author: current_user, post: Post.find(params[:comment][:post_id]))
     if @comment.update!(allowed_comment_params)
       redirect_to comment_path(id: @comment.id)
     else

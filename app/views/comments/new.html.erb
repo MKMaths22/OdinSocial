@@ -1,2 +1,8 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<%= turbo_frame_tag "add_comment" do %>
+  <%= form_for @comment do |f| %>
+    <%= f.label(:body, 'Comment:') %>
+    <%= f.hidden_field :post_id, :value => params[:post_id] %>
+    <%= f.text_field :body %>
+    <%= f.submit 'Submit' %>
+  <% end %>
+<% end %>
