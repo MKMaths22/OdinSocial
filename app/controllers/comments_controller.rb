@@ -1,12 +1,14 @@
 class CommentsController < ApplicationController
   def new
-    @comment = Comment.new(author: current_user, post: Post.find(params[:post_id]))
+    @comment = Comment.new(author: current_user )
   end
   
   def create
-    @comment = Comment.new(author: current_user, post: Post.find(params[:comment][:post_id]))
+    @comment = Comment.new(author: current_user )
     if @comment.update!(allowed_comment_params)
       redirect_back(fallback_location: root_path)
+    # redirect_to post_path(id: @comment.post_id)
+    # redirect_to root_path
     else
       flash.now[:alert] = 'Comment failed to save.'
       render new_comment_path, status: :unprocessable_entity
@@ -47,6 +49,6 @@ class CommentsController < ApplicationController
   private
 
   def allowed_comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :post_id)
   end
 end
