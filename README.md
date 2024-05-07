@@ -9,6 +9,12 @@ Notes: I have not before had Devise working with a Mailer to send emails, so I h
 Database_Authenticatable, Registerable, Confirmable,
          Rememberable and Validatable.
 
+-----------------
+
+One significant problem has been trying to get the posts#show or posts#index page to update automatically when a new comment is added to a post. I have used Turbo Frames to generate the comments#new form within the display_post partial, but redirecting from the CommentsController was not working until I discovered this solution: 
+https://discuss.hotwired.dev/t/how-to-redirect-from-a-form-that-is-inside-a-turbo-frame/4164
+By adding the Stimulus Javascript controller form_redirect_controller.js and adding data-controller and data-action attributes to the form_with in comments#new, the redirect_back command in the CommentsController updates the current page with the new comment, as intended.
+
 
 Things you may want to cover:
 
