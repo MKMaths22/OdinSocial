@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(author: current_user )
     if @comment.update!(allowed_comment_params)
-      redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
     # redirect_to post_path(id: @comment.post_id)
-    # redirect_to root_path
+    redirect_to root_path
     else
       flash.now[:alert] = 'Comment failed to save.'
       render new_comment_path, status: :unprocessable_entity
