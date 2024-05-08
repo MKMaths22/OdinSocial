@@ -1,8 +1,3 @@
 <%= turbo_frame_tag "add_comment" do %>
-  <%= form_for @comment, :html => { 'data-controller' => 'form-redirect', 'data-action' => 'turbo:submit-end->form-redirect#next' } do |f| %>
-    <%= f.label(:body, 'Comment:') %>
-    <%= f.hidden_field :post_id, :value => params[:post_id] %>
-    <%= f.text_field :body %>
-    <%= f.submit 'Submit' %>
-  <% end %>
+  <%= render 'comment_form', post_id_value: params[:post_id] %>
 <% end %>
