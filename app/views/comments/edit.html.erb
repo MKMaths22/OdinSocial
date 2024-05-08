@@ -1,2 +1,8 @@
-<h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<%= turbo_frame_tag "edit_comment" do %>
+  <%= form_for @comment, :html => { 'data-controller' => 'form-redirect', 'data-action' => 'turbo:submit-end->form-redirect#next' } do |f| %>
+    <%= f.label(:body, 'Comment:') %>
+    <%= f.hidden_field :post_id, :value => @comment.post.id %>
+    <%= f.text_field :body %>
+    <%= f.submit 'Submit' %>
+  <% end %>
+<% end %>

@@ -28,10 +28,9 @@ class CommentsController < ApplicationController
     end
     if @comment.update!(allowed_comment_params)
       flash[:notice] = 'Comment updated successfully.'
-      redirect_to comment_path(id: @comment.id)
+      redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = 'Update failed.'
-      render comment_path(id: @comment.id), status: :unprocessable_entity
+      flash.now[:alert] = 'Update failed.'
     end
   end
 
