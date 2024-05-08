@@ -31,17 +31,16 @@
     </div>
   </div>
   <div class="postcomments">
+    <h3>Recent Comments</h3>
     <% if post.comments.size.zero? %>
       This post has no comments.
-    <% else %>
-      <%= turbo_frame_tag "add_comment" do %>
-        <%= link_to "Add Comment", new_comment_path(post_id: post.id) %>
-      <% end %>
-    <h3>Recent Comments</h3>
-      <% comments_to_show = post.comments.take(10) %>
-      <% comments_to_show.each do |one_comment| %>
-        <%= render 'comments/display_comment', comment: one_comment, text_limit: text_limit %>
-      <% end %>
+    <% end %>
+    <%= turbo_frame_tag "add_comment" do %>
+      <%= link_to "Add Comment", new_comment_path(post_id: post.id) %>
+    <% end %>
+    <% comments_to_show = post.comments.take(10) %>
+    <% comments_to_show.each do |one_comment| %>
+      <%= render 'comments/display_comment', comment: one_comment, text_limit: text_limit %>
     <% end %>
   </div>
 </div>
