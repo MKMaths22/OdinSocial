@@ -43,4 +43,9 @@
       <%= render 'comments/display_comment', comment: one_comment, text_limit: text_limit %>
     <% end %>
   </div>
+  <% if text_limit.positive? %>
+    <div class="showpostlink">
+      <%= link_to "See Full Post", post_path(id: post.id) %>
+    </div>
+  <% end %>
 </div>
