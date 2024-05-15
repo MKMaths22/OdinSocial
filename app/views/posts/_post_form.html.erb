@@ -1,6 +1,14 @@
 <%= stylesheet_link_tag "posts" %>
 
 <%= form_for post, :html => {:class => 'postform'} do |f| %>
+<div class="postformmessage">
+  <div>
+    <%# This is a dummy div to line up the form using Grid. %>
+  </div>
+  <h3>
+    <%= message %>
+  </h3>
+</div>
 <div class="postformtitle">
   <%= f.label(:title, 'Title:') %>
   <%= f.text_field :title %>
