@@ -48,4 +48,10 @@
       <%= link_to "See Full Post", post_path(id: post.id) %>
     </div>
   <% end %>
+  <% if current_user == post.author %>
+    <div class="editdeletepostlinks">
+      <%= link_to "Edit Post", edit_post_path(id: post.id) %>
+      <%= link_to "Delete Post", post_path(id: post.id), data: { 'turbo-method' => :delete } %>
+    </div>
+  <% end %>
 </div>

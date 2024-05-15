@@ -52,7 +52,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.author == current_user
       @post.destroy
-      flash.now[:notice] = `Post number #{params[:id]} deleted successfully.`
+      flash.now[:notice] = "Post number #{params[:id]} deleted successfully."
       redirect_to posts_path
     else
       flash.now[:alert] = `Users may only delete their own posts. Permission denied.`

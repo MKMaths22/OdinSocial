@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag "posts" %>
+
+<%= form_for post do |f| %>
+<div class="postformtitle">
+  <%= f.label(:title, 'Title:') %>
+  <%= f.text_field :title %>
+</div>
+<div class="postformbody">
+  <%= f.label(:body, 'Body:') %>
+  <%= f.text_area :body %>
+</div>
+<div class="postformsubmit">  
+  <%= f.submit 'Submit' %>
+</div>
+<% end %>
