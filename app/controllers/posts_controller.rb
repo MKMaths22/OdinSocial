@@ -32,16 +32,16 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if current_user != @post.author
-      flash.now[:alert] = `Users may only edit their own posts. Permission denied.`
+      flash.now[:alert] = "Users may only edit their own posts. Permission denied."
       redirect_to post_path(id: @post.id)
       return
     end
     @post = Post.find(params[:id])
     if @post.update!(allowed_post_params)
-      flash[:notice] = `Post updated successfully.`
+      flash[:notice] = "Post updated successfully."
       redirect_to post_path(id: @post.id)
     else
-      flash[:alert] = `Update failed.`
+      flash[:alert] = "Update failed."
       render edit_post_path(id: @post.id), status: :unprocessable_entity
     end
   end
@@ -52,10 +52,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.author == current_user
       @post.destroy
-      flash.now[:notice] = "Post number #{params[:id]} deleted successfully."
+      flash[:notice] = "Post number #{params[:id]} deleted successfully."
       redirect_to posts_path
     else
-      flash.now[:alert] = `Users may only delete their own posts. Permission denied.`
+      flash.now[:alert] = "Users may only delete their own posts. Permission denied."
       redirect_to root_path
     end
   end
