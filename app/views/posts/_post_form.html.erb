@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "posts" %>
 
-<%= form_for post do |f| %>
+<%= form_for post, :html => {:class => 'postform'} do |f| %>
 <div class="postformtitle">
   <%= f.label(:title, 'Title:') %>
   <%= f.text_field :title %>

@@ -93,7 +93,7 @@ div.commentdiv > div.userlinkdiv {
   font-size: 10px;
 }
 
-form {
+form.postform {
   padding-left: 10px;
   display: flex;
   flex-direction: column;
@@ -101,7 +101,7 @@ form {
   width: 30vw;
 }
 
-form > div {
+form.postform > div {
   display: grid;
   grid-template-columns: 50px 1fr;
 }
