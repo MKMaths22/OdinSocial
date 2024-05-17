@@ -34,7 +34,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def index
-    @users = User.all
+    @followees = current_user.followees
+    @requestees = current_user.requestees
+    @other_users = User.users_to_request(current_user)
+    @requesters = current_user.requesters
+    @followers = current_user.followers
   end
 
   def show
