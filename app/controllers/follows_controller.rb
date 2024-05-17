@@ -1,8 +1,10 @@
 class FollowsController < ApplicationController
   def create
-    @follow = Follow.new(follower: current_user)
-    if @follow.update!(allowed_follow_params)
-      flash[:notice] = "You are now following #{@follow.followee.name}."
+    @follow = Follow.new(followee: current_user)
+    @followrequest = FollowRequest.where(:requestee = current_user).where(:requester = params(:follower)).first
+    if @followrequest && @follow.update!(allowed_follow_params)
+      flash[:notice] = "You are now being followed by #{@follow.follower.name}."
+      @followrequest.destroy
     else
       flash[:alert] = 'Error: Follow could not be created.'
     end
@@ -24,6 +26,6 @@ class FollowsController < ApplicationController
   private
 
   def allowed_follow_params
-    params.require(:follow).permit(:followee)
+    params.require(:follow).permit(:follower)
   end
 end
