@@ -32,4 +32,3 @@ class FollowRequestsController < ApplicationController
     params.require(:follow_request).permit(:requestee)
   end
 end
-end

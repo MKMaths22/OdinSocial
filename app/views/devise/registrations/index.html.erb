@@ -27,3 +27,20 @@ Also anywhere on the web site a User's name should be displayed in a standard wa
     <% end %>
   <% end %>
 </div>
+
+<div class="managefollowssection">
+  <h2>Outgoing Follow Requests</h2>
+  <% if @requestees.size.zero? %>
+    <p class="nothingmessage">
+      You currently have no outgoing Follow requests.
+    </p>
+  <% else %>
+    <% @requestees.each do |user| %>
+     <div class="userindexlinkdiv> 
+       <%= render 'devise/registrations/link_to_user', user: user, by: false %>
+       <%= link_to 'Cancel Request', follow_request_path(id: FollowRequest.find_by(requester: current_user, requestee: user).id), data: { 'turbo_method' => :delete } %>
+     </div>
+    <% end %>
+  <% end %>
+</div>
+

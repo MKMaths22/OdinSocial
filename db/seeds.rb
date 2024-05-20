@@ -48,7 +48,7 @@ follows_array.each do |subarray|
   Follow.create(follower: User.find_by(name: subarray[0]), followee: User.find_by(name: subarray[1]))
 end
 
-follow_requests_array = [['Chris', 'Peter']]
+follow_requests_array = [['Chris', 'Peter'], ['Peter', 'Fred'], ['Peter', 'Charles']]
 follow_requests_array.each do |subarray|
   FollowRequest.create(requester: User.find_by(name: subarray[0]), requestee: User.find_by(name: subarray[1]))
 end
