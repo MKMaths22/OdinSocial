@@ -11,3 +11,19 @@ Section: 'Incoming Follow Requests' which lists current_user.requesters with lin
 Section: 'Your Followers' which lists current_user.followers
 
 Also anywhere on the web site a User's name should be displayed in a standard way (styled with a certain class) AND be a clickable LINK to their profile page.
+
+<div class="managefollowssection">
+  <h2>You Are Following</h2>
+  <% if @followees.size.zero? %>
+    <p class="nothingmessage">
+      You are not following anyone at the moment.
+    </p>
+  <% else %>
+    <% @followees.each do |user| %>
+     <div class="userindexlinkdiv> 
+       <%= render 'devise/registrations/link_to_user', user: user, by: false %>
+       <%= link_to 'Unfollow', follow_path(id: Follow.find_by(follower: current_user, followee: user).id), data: { 'turbo_method' => :delete } %>
+     </div>
+    <% end %>
+  <% end %>
+</div>
