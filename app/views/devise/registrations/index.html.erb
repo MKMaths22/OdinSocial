@@ -44,3 +44,19 @@ Also anywhere on the web site a User's name should be displayed in a standard wa
   <% end %>
 </div>
 
+<div class="managefollowssection">
+  <h2>Other Members</h2>
+  <% if @other_users.size.zero? %>
+    <p class="nothingmessage">
+      There are no other users to request to follow.
+    </p>
+  <% else %>
+    <% @other_users.each do |user| %>
+     <div class="userindexlinkdiv> 
+       <%= render 'devise/registrations/link_to_user', user: user, by: false %>
+       <%= link_to "Request to follow #{user.name}", follow_requests_path(follow_request: { requestee_id: user.id } ), data: { 'turbo_method' => :post } %>
+     </div>
+    <% end %>
+  <% end %>
+</div>
+

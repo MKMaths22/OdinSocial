@@ -29,6 +29,6 @@ class FollowRequestsController < ApplicationController
   private
 
   def allowed_follow_request_params
-    params.require(:follow_request).permit(:requestee)
+    params.require(:follow_request).permit(:requestee_id)
   end
 end
