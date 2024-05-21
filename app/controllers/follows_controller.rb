@@ -1,7 +1,7 @@
 class FollowsController < ApplicationController
   def create
     @follow = Follow.new(followee: current_user)
-    @followrequest = FollowRequest.where(requestee: current_user).where(requester: params(:follower)).first
+    @followrequest = FollowRequest.find_by(requestee: current_user, requester_id: params[:follow][:follower_id])
     if @followrequest && @follow.update!(allowed_follow_params)
       flash[:notice] = "You are now being followed by #{@follow.follower.name}."
       @followrequest.destroy
@@ -26,6 +26,6 @@ class FollowsController < ApplicationController
   private
 
   def allowed_follow_params
-    params.require(:follow).permit(:follower)
+    params.require(:follow).permit(:follower_id)
   end
 end
