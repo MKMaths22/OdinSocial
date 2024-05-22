@@ -8,7 +8,7 @@
     </p>
   <% else %>
     <% list_of_users.each do |user| %>
-      <div class="userindexlinkdiv> 
+      <div class="userindexlinkdiv"> 
        <%= render 'devise/registrations/link_to_user', user: user, by: false %>
 
        <% case linktype

@@ -1,13 +1,14 @@
-<%= render 'manage_follows_section', section_heading: 'You Are Following', list_of_users: @followees, nothing_message: 'You are not currently following anyone.', linktype: 'Unfollow' %>
+<div class="userindexdiv">
+  <%= render 'manage_follows_section', section_heading: 'You Are Following', list_of_users: @followees, nothing_message: 'You are not currently following anyone.', linktype: 'Unfollow' %>
 
-<%= render 'manage_follows_section', section_heading: 'Outgoing Follow Requests', list_of_users: @requestees, nothing_message: 'You currently have no outgoing Follow requests.', linktype: 'Cancel Request' %>
+  <%= render 'manage_follows_section', section_heading: 'Outgoing Follow Requests', list_of_users: @requestees, nothing_message: 'You currently have no outgoing Follow requests.', linktype: 'Cancel Request' %>
 
-<%= render 'manage_follows_section', section_heading: 'Other Members', list_of_users: @other_users, nothing_message: 'There are no other users to request to follow.', linktype: 'Request to follow' %>
+  <%= render 'manage_follows_section', section_heading: 'Other Members', list_of_users: @other_users, nothing_message: 'There are no other users to request to follow.', linktype: 'Request to follow' %>
 
-<%= render 'manage_follows_section', section_heading: 'Incoming Follow Requests', list_of_users: @requesters, nothing_message: 'You have no incoming Follow requests.', linktype: 'Accept or Decline' %>
+  <%= render 'manage_follows_section', section_heading: 'Incoming Follow Requests', list_of_users: @requesters, nothing_message: 'You have no incoming Follow requests.', linktype: 'Accept or Decline' %>
 
-<%= render 'manage_follows_section', section_heading: 'Your Followers', list_of_users: @followers, nothing_message: 'You currently have no followers.', linktype: 'None' %>
-
+  <%= render 'manage_follows_section', section_heading: 'Your Followers', list_of_users: @followers, nothing_message: 'You currently have no followers.', linktype: 'None' %>
+</div>
 
 
 
