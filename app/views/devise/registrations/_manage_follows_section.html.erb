@@ -1,0 +1,28 @@
+<div class="managefollowssection">
+  <h2> 
+  <%= section_heading %> 
+  </h2>
+  <% if list_of_users.size.zero? %>
+    <p class="nothingmessage"> 
+      <%= nothing_message %> 
+    </p>
+  <% else %>
+    <% list_of_users.each do |user| %>
+      <div class="userindexlinkdiv> 
+       <%= render 'devise/registrations/link_to_user', user: user, by: false %>
+
+       <% case linktype
+       when 'Unfollow' %>
+         <%= link_to 'Unfollow', follow_path(id: Follow.find_by(follower: current_user, followee: user).id), data: { 'turbo_method' => :delete } %>
+       <% when 'Cancel Request' %>
+         <%= link_to 'Cancel Request', follow_request_path(id: FollowRequest.find_by(requester: current_user, requestee: user).id), data: { 'turbo_method' => :delete } %>
+       <% when 'Request to follow' %>
+         <%= link_to "Request to follow #{user.name}", follow_requests_path(follow_request: { requestee_id: user.id } ), data: { 'turbo_method' => :post } %>
+       <% when 'Accept or Decline' %>
+         <%= link_to 'Accept', follows_path(follow: { follower_id: user.id } ), data: { 'turbo_method' => :post } %>
+         <%= link_to 'Decline', follow_request_path(id: FollowRequest.find_by(requester: user, requestee: current_user).id), data: { 'turbo_method' => :delete } %>
+       <% end %>
+       </div>
+    <% end %>
+  <% end %>
+</div>
