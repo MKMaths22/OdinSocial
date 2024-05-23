@@ -13,4 +13,10 @@ class ProfilesController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def allowed_profile_params
+    params.require(:profile).permit(:picture)
+  end
 end
