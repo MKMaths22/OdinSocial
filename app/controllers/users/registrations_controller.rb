@@ -31,6 +31,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       respond_with resource
     end
+    profile = Profile.new(user: resource, body: '', field_name_one: '', field_content_one: '', field_name_two: '', field_content_two: '', field_name_three: '', field_content_three: '')
+    profile.save
   end
 
   def index
