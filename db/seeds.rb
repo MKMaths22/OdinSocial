@@ -19,7 +19,7 @@ User.delete_all
 names_array = ['Peter', 'Chris', 'Ste', 'Rachael', 'Tom', 'Andrew', 'Brian', 'Charles', 'David', 'Edward', 'Fred', 'George', 'Harold', 'Imelda', 'Janice', 'Keith']
 names_array.each do |person|
   User.create(name: person, email: person.downcase.concat('@gmail.com') , password: 'abcdef', password_confirmation: 'abcdef', confirmed_at: Time.now) 
-  profile = Profile.new(user: User.find_by(name: person), body: '', field_name_one: '', field_content_one: '', field_name_two: '', field_content_two: '', field_name_three: '', field_content_three: '')
+  profile = Profile.new(user: User.find_by(name: person))
   profile.save
 end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_27_103425) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_132944) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,16 +91,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_103425) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.text "body"
+    t.text "body", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.string "field_name_one"
-    t.string "field_content_one"
-    t.string "field_name_two"
-    t.string "field_content_two"
-    t.string "field_name_three"
-    t.string "field_content_three"
+    t.string "field_name_one", default: "Favourite TV/Film"
+    t.string "field_content_one", default: ""
+    t.string "field_name_two", default: "Favourite Book"
+    t.string "field_content_two", default: ""
+    t.string "field_name_three", default: "Favourite Website"
+    t.string "field_content_three", default: ""
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
