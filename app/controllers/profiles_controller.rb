@@ -1,7 +1,4 @@
 class ProfilesController < ApplicationController
-  def new
-  end
-
   def create
   end
 
@@ -9,9 +6,6 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-  end
-
-  def destroy
   end
 
   private
