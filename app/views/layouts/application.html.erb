@@ -15,17 +15,15 @@
     <p class="alert"><%= alert %></p>
     <div class="navbar">
       <% if current_user %>
+        <p> Signed in as
+        <%= current_user.name %>
+        </p>
         <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete } %>
         <%= link_to "My Profile", "/users/registrations/#{current_user.id}" %>
         <%= link_to "Home", root_path %>
         <%= link_to "Create Post", new_post_path %>
         <%= link_to "Manage Follows", users_registrations_path %>
       <% end %>
-      
-      <%# Also need links to "My Profile" (when a user's name appears on the site elsewhere as post author etc. it should be a link to their profile, which only shows what you are authorised to see)
-      "Home" which goes to the Posts index
-      "Create Post"
-      "Manage Follows" --- the Users index page where you make/delete or accept/reject follow requests %>
     </div>
     <br>
     <%= yield %>
