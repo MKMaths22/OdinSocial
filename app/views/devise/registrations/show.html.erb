@@ -1,3 +1,7 @@
 This is the Show view for a particular user. Their name is 
 <%= @user.name %>
 When fleshed out this will also show their profile, but make sure only that user can EDIT the profile!
+
+<turbo-frame id="edit_account">
+  <%= link_to "Edit My Account", edit_user_registration_path %>
+</turbo-frame>
