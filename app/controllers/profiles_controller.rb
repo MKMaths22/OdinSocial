@@ -22,10 +22,6 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
-  def show
-    @profile = Profile.find(params[:id])
-  end
-
   private
 
   def allowed_profile_params
