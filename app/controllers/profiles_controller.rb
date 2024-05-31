@@ -3,9 +3,27 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @profile = Profile.find(params[:id])
+    if current_user != @profile.user
+      flash.now[:alert] = "Users may only edit their own profiles. Permission denied."
+      redirect_to root_path
+      return
+    end
+    if @profile.update!(allowed_profile_params)
+      flash[:notice] = "Profile information updated successfully."
+      redirect_to "users/registrations/#{@profile.user.id}"
+    else
+      flash[:alert] = "Update failed."
+      render edit_profile_path(id: @profile.id), status: :unprocessable_entity
+    end
   end
 
   def edit
+    @profile = Profile.find(params[:id])
+  end
+
+  def show
+    @profile = Profile.find(params[:id])
   end
 
   private

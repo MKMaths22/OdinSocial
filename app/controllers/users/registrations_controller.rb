@@ -45,6 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def show
     @user = User.find(params[:id])
+    @profile = @user.profile
   end
 
   # GET /resource/edit
