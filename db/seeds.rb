@@ -19,7 +19,7 @@ User.delete_all
 names_array = ['Peter', 'Chris', 'Ste', 'Rachael', 'Tom', 'Andrew', 'Brian', 'Charles', 'David', 'Edward', 'Fred', 'George', 'Harold', 'Imelda', 'Janice', 'Keith']
 names_array.each do |person|
   User.create(name: person, email: person.downcase.concat('@gmail.com') , password: 'abcdef', password_confirmation: 'abcdef', confirmed_at: Time.now) 
-  profile = Profile.new(user: User.find_by(name: person))
+  profile = Profile.new(user: User.find_by(name: person), body: "This is a sample profile body. This is a large enough block of text that we can test how it shows on the user's profile page and can experiment with styling its appearance. Lorem ipsum looks like nonsense, so I have typed my own version of sample text blah blah blah. People think they are so interesting, aren't they? I have made you read this for a long time now, but the bulk of this paragraph does serve a crucial purpose.")
   profile.save
 end
 

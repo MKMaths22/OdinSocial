@@ -21,6 +21,9 @@
 
 <turbo-frame id="edit_profile">
   <div class="profilediv">
+    <div class="profilebody">
+      <%= @profile.body %>
+    </div>
     <% if current_user == @user %>
       <%= link_to "Edit Profile Info.", edit_profile_path(id: @profile.id) %>
     <% else %>
