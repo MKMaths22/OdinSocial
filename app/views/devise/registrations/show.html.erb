@@ -1,13 +1,32 @@
-This is the Show view for a particular user. Their name is 
-<%= @user.name %>
-When fleshed out this will also show their profile, but make sure only that user can EDIT the profile!
-
-<turbo-frame id="edit_account">
-  <%= link_to "Edit My Account", edit_user_registration_path %>
-</turbo-frame>
+<% content_for :head do %>
+  <meta name="turbo-visit-control" content="reload" >
+<% end %>
+<% if current_user == @user %>
+  <turbo-frame id="edit_account">
+    <div class="accountinfodiv">
+      <div class="namediv">
+        Name: 
+        <%= @user.name %>
+      </div>
+      <div class="emaildiv">
+        Email: 
+        <%= @user.email %>
+      </div>
+      <%= link_to "Edit My Account", edit_user_registration_path %>
+    </div>
+  </turbo-frame>
+<% else %>
+  You are not authorised to see/edit this user's account information.
+<% end %>
 
 <turbo-frame id="edit_profile">
-  <%= link_to "Edit Profile Info.", edit_profile_path(id: @profile.id) %>
-  HERE THE PROFILE INFO IS DISPLAYED AND CAN BE EDITED USING THE TURBO FRAME
-  <%= image_tag(@profile.picture, width: 200) if @profile.picture.attached? %>
+  <div class="profilediv">
+    <% if current_user == @user %>
+      <%= link_to "Edit Profile Info.", edit_profile_path(id: @profile.id) %>
+    <% else %>
+      You are not authorised to edit this user's profile information.
+    <% end %>
+  
+    <%= image_tag(@profile.picture, width: 200) if @profile.picture.attached? %>
+  </div>
 </turbo-frame>
