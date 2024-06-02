@@ -5,3 +5,9 @@ When fleshed out this will also show their profile, but make sure only that user
 <turbo-frame id="edit_account">
   <%= link_to "Edit My Account", edit_user_registration_path %>
 </turbo-frame>
+
+<turbo-frame id="edit_profile">
+  <%= link_to "Edit Profile Info.", edit_profile_path(id: @profile.id) %>
+  HERE THE PROFILE INFO IS DISPLAYED AND CAN BE EDITED USING THE TURBO FRAME
+  <%= image_tag(@profile.picture, width: 200) if @profile.picture.attached? %>
+</turbo-frame>

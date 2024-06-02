@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
     end
     if @profile.update!(allowed_profile_params)
       flash[:notice] = "Profile information updated successfully."
-      redirect_to "users/registrations/#{@profile.user.id}"
+      redirect_to "/users/registrations/#{@profile.user.id}"
     else
       flash[:alert] = "Update failed."
       render edit_profile_path(id: @profile.id), status: :unprocessable_entity

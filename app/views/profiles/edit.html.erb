@@ -1,2 +1,8 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<turbo-frame id="edit_profile">
+  This is the contents of the Edit turbo frame. The form will go here. Look at the PHOTO web page to allow Users to attach a photo an then use that Stimulus controller to make redirection happen correctly.
+  <%= form_for @profile, :html => {:class => 'profileform'} do |f| %>
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+    <%= f.submit 'Submit Changes' %>
+  <% end %>
+</turbo-frame>
