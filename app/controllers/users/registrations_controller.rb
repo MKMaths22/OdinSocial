@@ -46,6 +46,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def show
     @user = User.find(params[:id])
     @profile = @user.profile
+    @user_posts = @user.authored_posts.includes(:likes, :comments).take(10)
   end
 
   # GET /resource/edit
@@ -72,7 +73,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      redirect_to "/users/registrations/#{current_user.id}"
+      flash[:alert] = "Update failed. Current password required to change account details."
+      redirect_back(fallback_location: root_path)
     end
   end
 

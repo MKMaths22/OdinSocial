@@ -24,6 +24,36 @@
     <div class="profilebody">
       <%= @profile.body %>
     </div>
+    <div class="profilefield">
+      <% if @profile.field_name_one.strip.size.positive? %>
+        <div class="profilefieldname">
+          <%= @profile.field_name_one %>
+        </div>
+        <div class="profilefieldcontent">
+          <%= @profile.field_content_one %>
+        </div>
+      <% end %>
+    </div>
+    <div class="profilefield">
+    <% if @profile.field_name_two.strip.size.positive? %>
+      <div class="profilefieldname">
+        <%= @profile.field_name_two %>
+      </div>
+      <div class="profilefieldcontent">
+        <%= @profile.field_content_two %>
+      </div>
+    <% end %>
+    </div>
+    <div class="profilefield">
+      <% if @profile.field_name_three.strip.size.positive? %>
+        <div class="profilefieldname">
+          <%= @profile.field_name_three %>
+        </div>
+        <div class="profilefieldcontent">
+          <%= @profile.field_content_three %>
+        </div>
+      <% end %>
+    </div>
     <% if current_user == @user %>
       <%= link_to "Edit Profile Info.", edit_profile_path(id: @profile.id) %>
     <% else %>
@@ -33,3 +63,5 @@
     <%= image_tag(@profile.picture, width: 200) if @profile.picture.attached? %>
   </div>
 </turbo-frame>
+
+<%= render 'posts/display_many_posts', posts_collection: @user_posts, header_text: "Recent posts by #{@user.name}" %>
