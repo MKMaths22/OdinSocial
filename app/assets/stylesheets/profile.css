@@ -1,0 +1,20 @@
+form.profileform {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 30vw;
+}
+
+div.profilefavourite > input[type="text"] {
+  width: 30%;
+}
+
+div.profilebody > textarea {
+  height: 100px;
+  width: 90%;
+}
+
+div.postformsubmit > input[type="submit"] {
+  width: 50px;
+  align-self: center;
+}

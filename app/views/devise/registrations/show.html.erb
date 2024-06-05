@@ -25,24 +25,7 @@
       <%= @profile.body %>
     </div>
     
-    <% number_words = ["one", "two", "three"] %>
-    <% number_words.each do |numword| %>
-      <div class="profilefield">
-        <% if `@profile.#{'field_name_'.concat(numword)}`.strip.size.positive? %>
-          <div class="profilefieldname">
-            <%= `@profile.field_name_#{numword}` %>
-          </div>
-          <div class="profilefieldcontent">
-            <%= `@profile.field_content_#{numword}` %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-    
-    
-    
-    
-      <div class="profilefield">
+    <div class="profilefield">
       <% if @profile.field_name_one.strip.size.positive? %>
         <div class="profilefieldname">
           <%= @profile.field_name_one %>
