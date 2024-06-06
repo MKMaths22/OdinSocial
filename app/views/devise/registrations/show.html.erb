@@ -1,7 +1,7 @@
 <% content_for :head do %>
   <meta name="turbo-visit-control" content="reload" >
 <% end %>
-<% if current_user == @user %>
+<% if current_user == @user %>  
   <turbo-frame id="edit_account">
     <div class="accountinfodiv">
       <div class="namediv">
@@ -21,6 +21,13 @@
 
 <turbo-frame id="edit_profile">
   <div class="profilediv">
+    <h3>About 
+      <% if current_user == @user %>
+        Me
+      <% else %>
+        <%= @user.name %>
+      <% end %>
+    </h3>
     <div class="profilebody">
       <%= @profile.body %>
     </div>
@@ -65,4 +72,10 @@
   </div>
 </turbo-frame>
 
-<%= render 'posts/display_many_posts', posts_collection: @user_posts, header_text: "Recent posts by #{@user.name}" %>
+<% if current_user == @user %>
+  <% title = "My Recent posts" %>
+<% else %>
+  <% title = "Recent posts by #{@user.name}" %>
+<% end %>
+
+<%= render 'posts/display_many_posts', posts_collection: @user_posts, header_text: title %>

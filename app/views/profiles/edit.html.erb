@@ -1,5 +1,4 @@
 <turbo-frame id="edit_profile">
-  This is the contents of the Edit turbo frame. The form will go here. Look at the PHOTO web page to allow Users to attach a photo an then use that Stimulus controller to make redirection happen correctly.
   <%= form_for @profile, :html => {:class => 'profileform', 'data-controller' => 'form-redirect', 'data-action' => 'turbo:submit-end->form-redirect#next' } do |f| %>
     <div class="profilebody"> 
       <%= f.label :body, 'Profile Body' %>

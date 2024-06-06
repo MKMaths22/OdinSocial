@@ -31,3 +31,25 @@ div.userindexlinkdiv {
   display: grid;
   grid-template-columns: 100px 100px 100px;
 }
+
+div.editaccountdiv {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+div.actions > input[type="submit"], form.button_to > button {
+  height: 30px;
+  font-size: 15px;
+  padding: 2px;
+}
+
+div.profilediv > h3, div.profilebody > label {
+  font-size: 30px;
+}
+
+div.profilebody {
+  font-size: 22px;
+}

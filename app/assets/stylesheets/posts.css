@@ -22,7 +22,7 @@ h3 > p {
   padding-left: 5px;
 }
 
-div.postdiv {
+div.postdiv, div.profilediv {
   display: flex;
   flex-direction: column;
   justify-content: space-around;

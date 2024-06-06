@@ -1,8 +1,21 @@
+div.profilediv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+  width: 50vw;
+  background-color: rgb(125, 125, 120);
+  border: 5px solid rgb(50, 50, 50);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+
 form.profileform {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 30vw;
+  width: 50vw;
 }
 
 div.profilefavourite > input[type="text"] {
@@ -17,4 +30,20 @@ div.profilebody > textarea {
 div.postformsubmit > input[type="submit"] {
   width: 50px;
   align-self: center;
+}
+
+div.accountinfodiv {
+  margin-left: 20px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 30px;
+}
+
+form.profileform {
+  width: 50vw;
+  background-color: rgb(125, 125, 120);
+  border: 5px solid rgb(50, 50, 50);
+  border-radius: 5px;
 }
