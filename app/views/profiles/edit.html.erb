@@ -1,5 +1,7 @@
 <turbo-frame id="edit_profile">
   <%= form_for @profile, :html => {:class => 'profileform', 'data-controller' => 'form-redirect', 'data-action' => 'turbo:submit-end->form-redirect#next' } do |f| %>
+    <h2>Edit Profile</h2>
+
     <div class="profilebody"> 
       <%= f.label :body, 'Profile Body' %>
       <%= f.text_area :body, placeholder: "Describe yourself. This information is visible to all, so do not include anything confidential." %>

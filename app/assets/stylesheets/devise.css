@@ -32,12 +32,28 @@ div.userindexlinkdiv {
   grid-template-columns: 100px 100px 100px;
 }
 
+div.regshowtopdiv {
+  display: flex;
+  justify-content: center;
+  height: 450px;
+  width: 95vw;
+  margin: auto;
+}
+
+#edit_profile {
+  width: 50vw;
+}
+
+#edit_account {
+  width: 50vw;
+}
+
 div.editaccountdiv {
+  width: 100%;
   height: 400px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-left: 20px;
 }
 
 div.actions > input[type="submit"], form.button_to > button {
