@@ -31,36 +31,20 @@
       <%= @profile.body %>
     </div>
     
-    <div class="profilefield">
-      <% if @profile.field_name_one.strip.size.positive? %>
-        <div class="profilefieldname">
-          <%= @profile.field_name_one %>
-        </div>
-        <div class="profilefieldcontent">
-          <%= @profile.field_content_one %>
-        </div>
-      <% end %>
-    </div>
-    <div class="profilefield">
-    <% if @profile.field_name_two.strip.size.positive? %>
-      <div class="profilefieldname">
-        <%= @profile.field_name_two %>
-      </div>
-      <div class="profilefieldcontent">
-        <%= @profile.field_content_two %>
+    <% number_words = ["one", "two", "three"] %>
+    <% number_words.each do |numword| %>
+      <div class="profilefield">
+        <% if @profile.send("field_name_#{numword}").strip.size.positive? %>
+          <div class="profilefieldname">
+            <%= @profile.send("field_name_#{numword}") %>
+          </div>
+          <div class="profilefieldcontent">
+            <%= @profile.send("field_content_#{numword}") %>
+          </div>
+        <% end %>
       </div>
     <% end %>
-    </div>
-    <div class="profilefield">
-      <% if @profile.field_name_three.strip.size.positive? %>
-        <div class="profilefieldname">
-          <%= @profile.field_name_three %>
-        </div>
-        <div class="profilefieldcontent">
-          <%= @profile.field_content_three %>
-        </div>
-      <% end %>
-    </div>
+    
     <% if current_user == @user %>
       <%= link_to "Edit Profile Info.", edit_profile_path(id: @profile.id) %>
     <% else %>
