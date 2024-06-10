@@ -35,7 +35,6 @@ div.userindexlinkdiv {
 div.regshowtopdiv {
   display: flex;
   justify-content: center;
-  height: 450px;
   width: 95vw;
   margin: auto;
 }
