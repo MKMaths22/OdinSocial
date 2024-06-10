@@ -9,24 +9,15 @@
     <div class="profilenote">
       You may have up to three 'Favourite' things: these disappear from your profile if the Category is blank.
     </div>
-    <div class="profilefavourite">
-      <%= f.label :field_name_one, 'Category' %>
-      <%= f.text_field :field_name_one %>
-      <%= f.label :field_content_one, 'Content' %>
-      <%= f.text_field :field_content_one %>
+    <% number_words = ["one", "two", "three"] %>
+    <% number_words.each do |numword| %>
+      <div class="profilefavourite">
+      <%= f.label :"field_name_#{numword}", 'Category' %>
+      <%= f.text_field :"field_name_#{numword}" %>
+      <%= f.label :"field_content_#{numword}", 'Content' %>
+      <%= f.text_field :"field_content_#{numword}" %>
     </div>
-    <div class="profilefavourite">
-      <%= f.label :field_name_two, 'Category' %>
-      <%= f.text_field :field_name_two %>
-      <%= f.label :field_content_two, 'Content' %>
-      <%= f.text_field :field_content_two %>
-    </div>
-    <div class="profilefavourite">
-      <%= f.label :field_name_three, 'Category' %>
-      <%= f.text_field :field_name_three %>
-      <%= f.label :field_content_three, 'Content' %>
-      <%= f.text_field :field_content_three %>
-    </div>
+    <% end %>
     <div class="profilepicture">
       <%= f.label :picture %>
       <%= f.file_field :picture %>
