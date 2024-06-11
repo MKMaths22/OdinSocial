@@ -73,3 +73,5 @@ gem "devise", "~> 4.9"
 gem "minitest-rails", "~> 7.1.0"
 
 gem "letter_opener", group: :development
+
+gem "guard"
