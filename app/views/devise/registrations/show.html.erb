@@ -36,7 +36,7 @@
       <div class="profilefield">
         <% if @profile.send("field_name_#{numword}").strip.size.positive? %>
           <div class="profilefieldname">
-            <%= @profile.send("field_name_#{numword}") %>
+            <%= @profile.send("field_name_#{numword}") %>:
           </div>
           <div class="profilefieldcontent">
             <%= @profile.send("field_content_#{numword}") %>
