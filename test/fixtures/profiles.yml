@@ -2,8 +2,6 @@
 
 one:
   body: MyText
-  photo: MyString
 
 two:
   body: MyText
-  photo: MyString
