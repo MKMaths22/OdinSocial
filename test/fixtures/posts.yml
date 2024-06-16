@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 first_post:
-  title: First title
+  title: First
   body: First body
   author: peter
 
 second_post:
-  title: Second title
+  title: Second
   body: Second body
   author: chris

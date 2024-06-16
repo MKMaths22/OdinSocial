@@ -8,13 +8,13 @@ class FollowRequestTest < ActiveSupport::TestCase
 
   test "should save a follow request with duplicate requester but different requestee" do
     # test depends on fixtures follow_requests.yml and users.yml, that only existing follow request is chris requesting to follow peter, with ste as another user
-    request = FollowRequest.new(requester: User.find_by(name: 'Chris'), requestee: User.find_by(name: 'Ste'))
+    request = FollowRequest.new(requester: users(:chris), requestee: users(:ste))
     assert request.save, "Failed to save a follow request with duplicated requester but different requestee"
   end
 
   test "should save a follow request with duplicated requestee but different requester" do
     # test depends on fixtures follow_requests.yml and users.yml, that only existing follow request is chris requesting to follow peter, with ste as another user
-    request = FollowRequest.new(requester: User.find_by(name: 'Ste'), requestee: User.find_by(name: 'Peter'))
+    request = FollowRequest.new(requester: users(:ste), requestee: users(:peter))
     assert request.save, "Failed to save a follow request with duplicated requestee but different requester"
   end
 end
