@@ -2,8 +2,8 @@
 
 one:
   body: Comment body on post one
-  post: one
+  post: first_post
 
 two:
   body: Comment body on post two
-  post: two
+  post: second_post
