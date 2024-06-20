@@ -8,13 +8,19 @@ peter:
   name: Peter
   email: peter@gmail.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now - 1.hour %>
+  confirmation_sent_at: <%= Time.now - 2.hours %>
 
 chris:
   name: Chris
   email: chris@gmail.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now - 1.hour %>
+  confirmation_sent_at: <%= Time.now - 2.hours %>
 
 ste:
   name: Ste
   email: ste@gmail.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now - 1.hour %>
+  confirmation_sent_at: <%= Time.now - 2.hours %>
