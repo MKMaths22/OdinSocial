@@ -1,8 +1,5 @@
-<% if false %>
 <%= stylesheet_link_tag "posts" %>
-<div class="postsindexdiv">
+<div class="postsindexdiv"> 
   <%= render 'display_many_posts', posts_collection: @current_user_posts, header_text: "My Recent Authored Posts" %>
   <%= render 'display_many_posts', posts_collection: @followee_posts, header_text: "Recent Posts Authored by Those I Follow" %>
 </div>
-<% end %>
-This is a dummy view for posts#index using no logic about the logged-in user or their posts.

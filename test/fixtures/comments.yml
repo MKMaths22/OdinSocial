@@ -3,7 +3,9 @@
 one:
   body: Comment body on post one
   post: first_post
+  author: peter
 
 two:
   body: Comment body on post two
   post: second_post
+  author: chris
