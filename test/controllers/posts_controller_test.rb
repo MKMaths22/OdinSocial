@@ -10,7 +10,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "signed in user should get index page" do
     sign_in users(:peter)
-    get root_path
-    assert_response :success
+    get posts_url
+    assert_response :success, "signed in user did not reach posts#index view"
   end
 end
