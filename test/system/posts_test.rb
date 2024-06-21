@@ -3,6 +3,7 @@ require "application_system_test_case"
 class PostsTest < ApplicationSystemTestCase
   setup do
     @post = Post.first
+    @other_post = posts(:second_post)
     @user = User.first
     sign_in @user
   end
@@ -30,6 +31,15 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Submit"
 
     assert_text "Post updated successfully."
+    click_on "Home"
+  end
+
+  test "should not show links to update or delete Post when post not authored by signed in user" do
+    visit post_url(@other_post)
+    # works because posts(:second_post) has author = users(:chris) om fixtures
+    assert_selector "a", text: "Edit Post", count: 0
+    # the link should not exist
+    assert_selector "a", text: "Delete Post", count: 0
     click_on "Home"
   end
 
