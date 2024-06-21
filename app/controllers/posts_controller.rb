@@ -18,6 +18,7 @@ class PostsController < ApplicationController
     # This assumes current_user is not being submitted with the form.
     if @post.update!(allowed_post_params)
       redirect_to post_path(id: @post.id)
+      flash[:notice] = "Post was successfully created."
     else
       render new_post_path, status: :unprocessable_entity
     end
