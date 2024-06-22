@@ -30,4 +30,20 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post.reload
     assert_equal('NewTitle', @post.title)
   end
+
+  test "signed in user should not be able to delete post they did not author" do
+    sign_in users(:peter)
+    @post = Post.find_by(author: users(:chris))
+    post_id = @post.id
+    delete post_url(@post)
+    assert_not_nil(Post.find_by(id: post_id))
+  end
+
+  test "signed in user should be able to delete post they authored" do
+    sign_in users(:peter)
+    @post = Post.find_by(author: users(:peter))
+    post_id = @post.id
+    delete post_url(@post)
+    assert_nil(Post.find_by(id: post_id))
+  end
 end
