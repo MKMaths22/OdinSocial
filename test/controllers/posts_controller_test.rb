@@ -19,7 +19,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     post_params = { post: {title: 'NewTitle'} }
     patch post_url(@post), params: post_params
     @post.reload
-    assert_not_equal('NewTitle', @post.title)
+    assert_not_equal('NewTitle', @post.title, "signed in user updated post they did not author")
   end
 
   test "signed in user should be able to update post they authored" do
@@ -28,7 +28,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     post_params = { post: {title: 'NewTitle'} }
     patch post_url(@post), params: post_params
     @post.reload
-    assert_equal('NewTitle', @post.title)
+    assert_equal('NewTitle', @post.title, "signed in user failed to update post they authored")
   end
 
   test "signed in user should not be able to delete post they did not author" do
@@ -36,7 +36,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post = Post.find_by(author: users(:chris))
     post_id = @post.id
     delete post_url(@post)
-    assert_not_nil(Post.find_by(id: post_id))
+    assert_not_nil(Post.find_by(id: post_id), "signed in user deleted post they did not author")
   end
 
   test "signed in user should be able to delete post they authored" do
@@ -44,6 +44,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post = Post.find_by(author: users(:peter))
     post_id = @post.id
     delete post_url(@post)
-    assert_nil(Post.find_by(id: post_id))
+    assert_nil(Post.find_by(id: post_id), "signed in user failed to delete post they authored")
   end
 end
