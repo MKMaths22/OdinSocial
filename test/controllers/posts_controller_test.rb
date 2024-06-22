@@ -19,6 +19,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     post posts_url(@post), params: post_params
     assert_not_nil(Post.where(title: 'NewTitle', body: 'NewBody').first, "signed in user failed to create a post")
   end
+
+  test "shows a post to signed in user" do
+    sign_in users(:peter)
+    get post_url(id: Post.first.id)
+    assert_response :success, "failed to show a post to signed in user"
+  end
   
   test "signed in user should not be able to update post they did not author" do
     sign_in users(:peter)
