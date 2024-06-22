@@ -13,6 +13,13 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success, "signed in user did not reach posts#index view"
   end
 
+  test "signed in user creates a post" do
+    sign_in users(:peter)
+    post_params = { post: {title: 'NewTitle', body: 'NewBody'}}
+    post posts_url(@post), params: post_params
+    assert_not_nil(Post.where(title: 'NewTitle', body: 'NewBody').first, "signed in user failed to create a post")
+  end
+  
   test "signed in user should not be able to update post they did not author" do
     sign_in users(:peter)
     @post = Post.find_by(author: users(:chris))
