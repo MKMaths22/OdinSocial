@@ -5,12 +5,19 @@ class PostsTest < ApplicationSystemTestCase
     @post = Post.first
     @other_post = posts(:second_post)
     @user = User.first
+    # we will sign in users(:peter) = User.first in users.yml
     sign_in @user
   end
 
   test "visiting the index" do
     visit posts_url
+    # signed in user peter follows chris (see users.yml and follows.yml)
     assert_selector "h1", text: "My Recent Authored Posts"
+    # this section should include posts by peter
+    assert_selector "h1", text: "Recent Posts Authored by Those I Follow"
+    # this section should include posts by chris, the only followee of peter
+    assert_selector "div.editdeletepostlinks", count: 1
+    # the links to edit and delete posts should only be shown on the one post peter authored, not the one chris did 
   end
 
   test "should create post" do
