@@ -16,8 +16,11 @@ class PostsTest < ApplicationSystemTestCase
     # this section should include posts by peter
     assert_selector "h1", text: "Recent Posts Authored by Those I Follow"
     # this section should include posts by chris, the only followee of peter
-    assert_selector "div.editdeletepostlinks", count: 1
-    # the links to edit and delete posts should only be shown on the one post peter authored, not the one chris did 
+    own_posts_number = [Post.where(author: User.first).count, 10].min
+    assert_selector "div.editdeletepostlinks", count: own_posts_number
+    # the links to edit and delete posts should only be shown on the one post peter authored, not the one chris did.
+    other_posts_number = [Post.where(author: User.first.followees).count, 10].min
+    assert_selector "div.postdiv", count: own_posts_number + other_posts_number
   end
 
   test "should create post" do
