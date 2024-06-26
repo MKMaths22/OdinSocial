@@ -2,8 +2,8 @@ require "application_system_test_case"
 
 class PostsTest < ApplicationSystemTestCase
   setup do
-    @post = Post.first
-    @other_post = posts(:second_post)
+    @post = Post.find_by(author: User.first)
+    @other_post = Post.where.not(author: User.first).first
     @user = User.first
     # we will sign in users(:peter) = User.first in users.yml
     sign_in @user
