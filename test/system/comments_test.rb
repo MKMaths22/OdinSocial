@@ -13,7 +13,11 @@ class CommentsTest < ApplicationSystemTestCase
   test "Creating a comment" do
     visit post_url(@post)
     stringy = @post.id
-    page.assert_selector(:css, 'a[href="/comments/new?post_id=#{stringy}"]')
+    page.assert_selector(:css, "a[href='/comments/new?post_id=#{stringy}']")
+    click_on "Add Comment"
+    fill_in "Comment:", with: "Howdy, we are testing a new comment!"
+    click_on "Submit"
+    assert_text "Howdy, we are testing a new comment!"
   end
 
   test "Should not show links for editing or deleting comment that user did not author" do
