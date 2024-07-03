@@ -1,11 +1,15 @@
 class PostsController < ApplicationController
   
   def index
+    flash.keep
+    # would like flash.keep if turbo_frame_request but then it never works.
     @followee_posts = Post.where(author: current_user.followees).includes(:likes, :comments).take(10)
     @current_user_posts = current_user.authored_posts.includes(:likes, :comments).take(10)
   end
 
   def show
+    flash.keep
+    # would like flash.keep if turbo_frame_request but then it never works.
     @post = Post.where(id: params[:id]).includes(:likes, :comments).first
   end
 
