@@ -7,8 +7,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new(author: current_user )
     if @comment.update!(allowed_comment_params)
     redirect_back(fallback_location: root_path)
-    # redirect_to post_path(id: @comment.post_id)
-    # redirect_to root_path
     else
       flash.now[:alert] = 'Comment failed to save.'
       render new_comment_path, status: :unprocessable_entity
@@ -41,6 +39,9 @@ class CommentsController < ApplicationController
       redirect_to root_path
     else
       @comment.destroy
+      flash[:notice] = 'Comment deleted successfully.'
+      # @comment.post.comments.reload
+      # @comment.post.likes.reload
       redirect_back(fallback_location: root_path)
     end
   end
