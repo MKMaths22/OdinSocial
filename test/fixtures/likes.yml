@@ -7,3 +7,7 @@
 first like:
   liker: chris
   liked_post: first_post
+
+second like:
+  liker: peter
+  liked_post: second_post
