@@ -10,7 +10,7 @@
     <%= render 'devise/registrations/link_to_user', user: comment.author, by: true %>
     <% if comment.author == current_user %>
       <div class="deleteeditcommentlink">
-        <%= link_to "Edit Comment", edit_comment_path(id: comment.id) %> 
+        <%= link_to "Edit Comment", edit_comment_path(id: comment.id) %>
         <%= link_to "Delete Comment", comment_path(id: comment.id), data: { 'turbo-method' => :delete } %>
       </div>
     <% end %>

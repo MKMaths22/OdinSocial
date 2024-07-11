@@ -2,6 +2,7 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(allowed_like_params)
     if @like.save
+      flash[:notice] = 'Like added successfully.'
       redirect_back(fallback_location: root_path)
     else
       flash[:alert] = 'Like failed.'
@@ -16,6 +17,7 @@ class LikesController < ApplicationController
       redirect_to root_path
     else
       @like.destroy
+      flash[:notice] = 'Like deleted successfully.'
       redirect_back(fallback_location: root_path)
     end
   end

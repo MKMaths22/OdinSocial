@@ -1,15 +1,11 @@
 class PostsController < ApplicationController
   
   def index
-    flash.keep if turbo_frame_request?
-    # flash.keep if turbo_frame_request but then it never works.
     @followee_posts = Post.where(author: current_user.followees).includes(:likes, :comments).take(10)
     @current_user_posts = current_user.authored_posts.includes(:likes, :comments).take(10)
   end
 
   def show
-    flash.keep if turbo_frame_request?
-    # flash.keep if turbo_frame_request but then it never works.
     @post = Post.where(id: params[:id]).includes(:likes, :comments).first
   end
 
@@ -21,8 +17,8 @@ class PostsController < ApplicationController
     @post = Post.new(author: current_user)
     # This assumes current_user is not being submitted with the form.
     if @post.update!(allowed_post_params)
-      redirect_to post_path(id: @post.id)
       flash[:notice] = "Post was successfully created."
+      redirect_to post_path(id: @post.id)
     else
       render new_post_path, status: :unprocessable_entity
     end
