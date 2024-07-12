@@ -39,11 +39,12 @@ class CommentsController < ApplicationController
       flash.now[:alert] = 'Delete failed. You may only delete your own comments.'
       redirect_to root_path
     else
+      @old_id = @comment.id
       @comment.destroy
       # flash[:notice] = 'Comment deleted successfully.'
       # redirect_back(fallback_location: root_path)
       flash.now[:notice] = 'Comment deleted successfully.'
-      render "comments/destroy"
+      render 'comments/destroy'
     end
   end
 
