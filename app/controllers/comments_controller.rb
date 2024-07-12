@@ -40,6 +40,8 @@ class CommentsController < ApplicationController
       redirect_to root_path
     else
       @comment.destroy
+      # flash[:notice] = 'Comment deleted successfully.'
+      # redirect_back(fallback_location: root_path)
       flash.now[:notice] = 'Comment deleted successfully.'
       render "comments/destroy"
     end
