@@ -19,12 +19,20 @@ class CommentsTest < ApplicationSystemTestCase
     fill_in "Comment:", with: "Howdy, we are testing a new comment!"
     click_on "Submit"
     assert_text "Howdy, we are testing a new comment!"
+    assert_text "Comment added successfully."
   end
 
   test "Should not show links for editing or deleting comment that user did not author" do
     visit post_url(@second_post)
     assert_text "Edit Comment", count: 0
     assert_text "Delete Comment", count: 0
+  end
+
+  test "Should update comment user authored" do
+    visit post_url(@post)
+    click_on "Edit Comment"
+    click_on "Submit"
+    assert_text "Comment updated successfully."
   end
 
   test "Should delete a comment when the signed in user wrote the comment" do
@@ -34,5 +42,6 @@ class CommentsTest < ApplicationSystemTestCase
     click_on "Delete Comment"
     assert_current_path("/posts/#{@post.id}")
     assert_text "Comment body on post one", count: 0
+    assert_text "Comment deleted successfully."
   end
 end
