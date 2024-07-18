@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  
   def new
     @comment = Comment.new(author: current_user )
   end
@@ -41,10 +42,10 @@ class CommentsController < ApplicationController
     else
       @old_id = @comment.id
       @comment.destroy
-      # flash[:notice] = 'Comment deleted successfully.'
-      # redirect_back(fallback_location: root_path)
       flash.now[:notice] = 'Comment deleted successfully.'
+      # redirect_back(fallback_location: root_path)
       render 'comments/destroy'
+      # redirect_to '/comments/destroy'
     end
   end
 
