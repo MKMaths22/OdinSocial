@@ -1,0 +1,5 @@
+<%= turbo_stream.update "edit_comment_#{@old_id}" do  %>
+<% end %>
+<%= turbo_stream.update "flash_messages" do %>
+  Comment deleted successfully.
+<% end %>

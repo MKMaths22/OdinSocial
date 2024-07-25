@@ -14,8 +14,10 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <turbo_frame id="flash_messages"> 
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </turbo_frame>
     <div class="navbar">
       <% if current_user %>
         <p> Signed in as
