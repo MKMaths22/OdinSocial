@@ -2,5 +2,5 @@
   <% if by==true %>
     By
   <% end %> 
-  <%= link_to "#{user.name}", "/users/registrations/#{user.id}" %>
+  <%= link_to "#{user.name}", "/users/registrations/#{user.id}", data: { turbo_frame: "_top" } %>
 </p>
