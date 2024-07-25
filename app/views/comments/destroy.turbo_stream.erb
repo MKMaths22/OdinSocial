@@ -3,3 +3,8 @@
 <%= turbo_stream.update "flash_messages" do %>
   Comment deleted successfully.
 <% end %>
+<% if Post.find(@post_id).comments.size.zero? %>
+  <%= turbo_stream.update "no_comments_#{@post_id}" do %>
+    This post has no comments.
+  <% end %>
+<% end %>

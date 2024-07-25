@@ -32,8 +32,10 @@
   </div>
   <div class="postcomments">
     <h3>Recent Comments</h3>
-    <% if post.comments.size.zero? %>
-      This post has no comments.
+    <%= turbo_frame_tag "no_comments_#{post.id}" do %> 
+      <% if post.comments.size.zero? %>
+        This post has no comments.
+      <% end %>
     <% end %>
     <%= turbo_frame_tag "add_comment" do %>
       <%= link_to "Add Comment", new_comment_path(post_id: post.id) %>
