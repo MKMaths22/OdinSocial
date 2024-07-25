@@ -8,3 +8,9 @@
     This post has no comments.
   <% end %>
 <% end %>
+<% if Post.find(@post_id).comments.size > 9 %>
+  <%= turbo_stream.update "last_comment_#{@post_id}" do %>
+    <% last_comment = Post.find(@post_id).comments.take(10).last %>
+    <%= render 'comments/display_comment', comment: last_comment, text_limit: 20 %>
+  <% end %>
+<% end %>

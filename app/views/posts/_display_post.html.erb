@@ -44,6 +44,8 @@
     <% comments_to_show.each do |one_comment| %>
       <%= render 'comments/display_comment', comment: one_comment, text_limit: text_limit %>
     <% end %>
+    <%= turbo_frame_tag "last_comment_#{post.id}" do %>
+    <% end %>
   </div>
   <% if text_limit.positive? %>
     <div class="showpostlink">
