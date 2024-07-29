@@ -118,3 +118,7 @@ div.postformsubmit > input[type="submit"] {
   width: 50px;
   align-self: center;
 }
+
+div.commentdiv:has(.negativespace) {
+  display: none;
+}
