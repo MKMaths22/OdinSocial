@@ -1,8 +1,8 @@
 <div class="commentdiv">
   <%= turbo_frame_tag "edit_comment_#{comment.id}" do %>
     <p class="commentbody">
-      <% if text_limit > 0 && comment.body.size > text_limit %>
-        <%= comment.body[0, text_limit]... %>
+      <% if @text_limit > 0 && comment.body.size > @text_limit %>
+        <%= comment.body[0, @text_limit]... %>
       <% else %>
         <%= comment.body %>
       <% end %>

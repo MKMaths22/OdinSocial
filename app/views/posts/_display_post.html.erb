@@ -5,8 +5,8 @@
     <%= post.title %>
   </div>
   <div class="postbody">
-    <% if text_limit > 0 && post.body.size > text_limit %>
-      <%= post.body[0, text_limit]... %>
+    <% if @text_limit > 0 && post.body.size > @text_limit %>
+      <%= post.body[0, @text_limit]... %>
     <% else %>
       <%= post.body %>
     <% end %>
@@ -42,12 +42,12 @@
     <% end %>
     <% comments_to_show = post.comments.take(10) %>
     <% comments_to_show.each do |one_comment| %>
-      <%= render 'comments/display_comment', comment: one_comment, text_limit: text_limit %>
+      <%= render 'comments/display_comment', comment: one_comment %>
     <% end %>
     <%= turbo_frame_tag "last_comment_#{post.id}" do %>
     <% end %>
   </div>
-  <% if text_limit.positive? %>
+  <% if @text_limit.positive? %>
     <div class="showpostlink">
       <%= link_to "See Full Post", post_path(id: post.id) %>
     </div>

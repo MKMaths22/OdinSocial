@@ -3,10 +3,12 @@ class PostsController < ApplicationController
   def index
     @followee_posts = Post.where(author: current_user.followees).includes(:likes, :comments).take(10)
     @current_user_posts = current_user.authored_posts.includes(:likes, :comments).take(10)
+    @text_limit = 20
   end
 
   def show
     @post = Post.where(id: params[:id]).includes(:likes, :comments).first
+    @text_limit = 0
   end
 
   def new
