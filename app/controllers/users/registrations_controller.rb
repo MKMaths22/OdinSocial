@@ -47,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.find(params[:id])
     @profile = @user.profile
     @user_posts = @user.authored_posts.includes(:likes, :comments).take(10)
-    @text_limit = 20
+    @text_limit = TEXT_LIMIT
   end
 
   # GET /resource/edit
