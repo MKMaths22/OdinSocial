@@ -43,10 +43,6 @@ class CommentsController < ApplicationController
       @post_id = @comment.post.id
       @old_id = @comment.id
       @comment.destroy
-      # flash.now[:notice] = 'Comment deleted successfully.'
-      # redirect_back(fallback_location: root_path)
-      # render 'comments/destroy'
-      # redirect_to '/comments/destroy'
       respond_to do |format|
         format.turbo_stream
       end

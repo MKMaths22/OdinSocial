@@ -126,3 +126,4 @@ div.postformsubmit > input[type="submit"] {
 div.commentdiv:has(.negativespace) {
   display: none;
 }
+/* The div.negativespace is created only when a comment is destroyed. This style command makes the entire commentdiv disappear when the Turbo Stream updates the edit_comment_#{@old_id} Turbo Frame. See views/comments/destroy.turbo_stream.erb
