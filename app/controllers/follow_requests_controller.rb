@@ -18,6 +18,9 @@ class FollowRequestsController < ApplicationController
       redirect_back(fallback_location: users_registrations_path)
     elsif @followrequest.requestee == current_user
       @followrequest.destroy
+      other_user = @followrequest.requester
+      flash[:notice] = "You have declined the follow request from #{other_user.name}."
+      # Does this flash message get overwritten by the follow#create message when we are only deleting the request to create the follow?
       redirect_back(fallback_location: users_registrations_path)
     else
       flash.now[:alert] = 'Permission denied, you may only delete a follow request in which you are either the requestee or the requester.'
