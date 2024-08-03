@@ -17,8 +17,6 @@ class FollowRequestsController < ApplicationController
       flash[:notice] = "You have withdrawn your request to follow #{other_user.name}."
       redirect_back(fallback_location: users_registrations_path)
     elsif @followrequest.requestee == current_user
-      # if being deleted because request is being accepted, no flash message needed because the creation of the Follow will cover that.
-      # PROBLEM: MAKE SURE FLASH MESSAGE IS DISPLAYED FOR DECLINING THE FOLLOW REQUEST ONLY IF THAT IS THE REASON FOR THE FOLLOWREQUEST BEING DESTROYED
       @followrequest.destroy
       redirect_back(fallback_location: users_registrations_path)
     else
