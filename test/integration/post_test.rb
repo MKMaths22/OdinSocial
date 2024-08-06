@@ -23,8 +23,11 @@ class PostTest < ActionDispatch::IntegrationTest
   test "can edit a post" do
     sign_in(User.first)
     post_id = Post.find_by(author: User.first).id
-    get "/posts/#{post_id}"
-    assert_select "div", "First"
-    assert_select "div", "First body"
+    patch "/posts/#{post_id}", params: { post: { title: "Edited Title", body: "Edited body" } }
+    assert_response :redirect
+    follow_redirect!
+    assert_response :success
+    assert_select "div", "Edited Title"
+    assert_select "div", "Edited body"
   end
 end
