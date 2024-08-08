@@ -1,7 +1,13 @@
 require "test_helper"
 
-# describe UserMailer do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
-# end
+class UserMailerTest < ActionMailer::TestCase
+  
+  def setup
+    @user = users(:unconfirmed)
+  end
+
+  test "the truth" do
+    assert true
+  end
+
+end
