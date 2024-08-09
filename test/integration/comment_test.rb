@@ -7,8 +7,8 @@ class CommentTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     follow_redirect!
     assert_response :success
-    assert_select "p", "Comment added successfully."
-    assert_select "p", "This is my new comment."
+    assert_select "p.notice", "Comment added successfully."
+    assert_select "p.commentbody", "This is my new comment."
   end
 
   test "can edit a comment" do

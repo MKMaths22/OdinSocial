@@ -25,9 +25,9 @@ ste:
   confirmed_at: <%= Time.now - 1.hour %>
   confirmation_sent_at: <%= Time.now - 2.hours %>
 
-# unconfirmed:
-#  name: Reginald
-#  email: reginald@gmail.com
-#  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-#  confirmed_at: nil
-#  confirmation_sent_at: nil
+unconfirmed:
+  name: Reginald
+  email: reginald@gmail.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now - 1.hour %>
+  confirmation_sent_at: <%= Time.now - 2.hours %>
