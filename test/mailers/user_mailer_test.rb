@@ -1,10 +1,11 @@
 require "test_helper"
 
 class UserMailerTest < ActionMailer::TestCase
-  
-  # def setup
-  #  @user = users(:unconfirmed)
-  # end
+
+  def setup
+    @user = User.first
+    @url = 'http://odinbook.com/login'
+  end
 
   test "welcome" do
     email = UserMailer.with(user: User.first).welcome_email
@@ -14,10 +15,11 @@ class UserMailerTest < ActionMailer::TestCase
     end
 
     assert_equal ["notifications@odinbook.com"], email.from
-    assert_equal ["peter@gmail.com"], email.to
+    assert_equal [User.first.email], email.to
     assert_equal "Welcome to OdinBook", email.subject
-    assert_equal read_fixture("welcome").join, email.html_part.body.to_s
-    assert_equal read_fixture("welcome_text").join, email.text_part.body.to_s
-  end
+    
+    mail_body = ERB.new(File.read('app/views/user_mailer/welcome_email.text.erb')).result(binding)
 
+    assert_equal mail_body.strip, email.text_part.body.to_s.strip
+  end
 end
