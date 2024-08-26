@@ -14,7 +14,6 @@ div.profilediv > a {
   font-size: 24px;
 }
 
-
 form.profileform {
   display: flex;
   flex-direction: column;
@@ -50,6 +49,9 @@ div.accountinfodiv {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+div.accountinfodiv > * {
   font-size: 30px;
 }
 
