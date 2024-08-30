@@ -1,2 +1,0 @@
-TEXT_LIMIT = 60
-    # This is used for restricting posts or comments in views with potentially multiple posts, that is apart from posts#show, where the limit is 0, which then has the effect of no limit at all on the rendered post and its comments.
