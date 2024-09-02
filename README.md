@@ -15,6 +15,8 @@ One significant problem has been trying to get the posts#show or posts#index pag
 https://discuss.hotwired.dev/t/how-to-redirect-from-a-form-that-is-inside-a-turbo-frame/4164
 By adding the Stimulus Javascript controller form_redirect_controller.js and adding data-controller and data-action attributes to the form_with in comments#new, the redirect_back command in the CommentsController updates the current page with the new comment, as intended.
 
+I have decided not to send real emails, due to the difficulties of making an account with a sender as a private individual (as opposed to an organisation).
+
 
 Things you may want to cover:
 
