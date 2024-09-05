@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   def index
     @followee_posts = Post.where(author: current_user.followees).includes(:likes, :comments).take(10)
     @current_user_posts = current_user.authored_posts.includes(:likes, :comments).take(10)
-    @text_limit = TEXT_LIMIT
+    @text_limit = ENV["TEXT_LIMIT"]
   end
 
   def show
