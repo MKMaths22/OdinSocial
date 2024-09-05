@@ -24,7 +24,7 @@ ste:
   name: Ste
   email: ste@gmail.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-  profile: one
+  profile: three
   confirmed_at: <%= Time.now - 1.hour %>
   confirmation_sent_at: <%= Time.now - 2.hours %>
 
