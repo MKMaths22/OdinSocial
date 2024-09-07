@@ -25,7 +25,7 @@
       <% end %>
     </h3>
     <div class="profilebody">
-      <%= @profile.body | '' %>
+      <%= @profile.body || '' %>
     </div>
     
     <% number_words = ["one", "two", "three"] %>
