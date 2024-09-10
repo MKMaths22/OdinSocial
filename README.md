@@ -17,7 +17,7 @@ By adding the Stimulus Javascript controller form_redirect_controller.js and add
 
 I have decided not to send real emails, due to the difficulties of making an account with a sender as a private individual (as opposed to an organisation).
 There have been bugs upon deployment due to my inexperience with secrets/tokens. After an error pushing to GitHub I have only then added the RAILS_MASTER_KEY to application.yml.
-I have now retried adding the master key, this time using the value in master.key file.
+I have now retried adding the master key, this time using the value in master.key file. That didn't work, so I have tried adding that 32-character string as a Repository secret on GitHub.
 
 
 Things you may want to cover:
