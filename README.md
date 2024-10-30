@@ -19,23 +19,8 @@ I have decided not to send real emails, due to the difficulties of making an acc
 There have been bugs upon deployment due to my inexperience with secrets/tokens. After an error pushing to GitHub I have only then added the RAILS_MASTER_KEY to application.yml.
 I have now retried adding the master key, this time using the value in master.key file. That didn't work, so I have tried adding that 32-character string as a Repository secret on GitHub.
 
+As of September 2024, changing config.require_master_key to be false in the production environment has stopped the Github errors and I have decided to declare the project complete at this point.
 
-Things you may want to cover:
+--------------------------
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The project has deployed to Fly.io and can be seen at https://odinsocial.fly.dev/users/sign_in 
